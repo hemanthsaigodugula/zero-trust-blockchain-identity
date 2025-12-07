@@ -1,0 +1,13 @@
+const hre = require('hardhat')
+
+async function main() {
+  const AccessLog = await hre.ethers.getContractFactory('AccessLog')
+  const accessLog = await AccessLog.deploy()
+  await accessLog.waitForDeployment()
+  console.log('AccessLog deployed to:', await accessLog.getAddress())
+}
+
+main().catch((error) => {
+  console.error(error)
+  process.exitCode = 1
+})

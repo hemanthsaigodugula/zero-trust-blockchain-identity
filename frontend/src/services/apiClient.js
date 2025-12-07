@@ -1,8 +1,15 @@
-import axios from 'axios'
+// frontend/src/services/apiClient.js
+import axios from "axios";
+
+// Read from Vite env (set in Vercel)
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
 const apiClient = axios.create({
-  baseURL: 'https://ztb-backend.onrender.com',
-  withCredentials: false
-})
+  baseURL: API_BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
-export default apiClient
+export default apiClient;
